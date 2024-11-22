@@ -11,28 +11,15 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  */
-package io.americanexpress.synapse.service.imperative.service;
+package io.americanexpress.service.sample.imperativebook.model;
 
-import io.americanexpress.synapse.service.imperative.model.BaseServiceRequest;
+import io.americanexpress.synapse.service.imperative.model.BaseServiceResponse;
 
 /**
- * {@code BaseDeleteService} class specifies the prototypes for performing business logic.
+ * {@code DeleteBookServiceResponse} class is the response model for {@link io.americanexpress.service.sample.imperativebook.service.DeleteBookService}
  *
  * @author Francois Gutt
  */
-public abstract non-sealed class BaseDeleteImperativeService<
-            I extends BaseServiceRequest
-        > extends BaseService {
+public class DeleteBookServiceResponse implements BaseServiceResponse {
 
-    /**
-     *
-     * @param serviceRequest
-     */
-    public void delete(I serviceRequest) {
-        logger.entry(serviceRequest);
-        executeDelete(serviceRequest);
-        logger.exit();
-    }
-
-    protected abstract void executeDelete(I serviceRequest);
 }

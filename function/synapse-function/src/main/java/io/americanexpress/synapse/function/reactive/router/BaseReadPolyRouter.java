@@ -14,9 +14,9 @@
 package io.americanexpress.synapse.function.reactive.router;
 
 import io.americanexpress.synapse.function.reactive.handler.BaseReadPolyHandler;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.MediaType;
 import org.springframework.web.reactive.function.server.RouterFunction;
@@ -35,9 +35,7 @@ import static org.springframework.web.reactive.function.server.RequestPredicates
  */
 public abstract class BaseReadPolyRouter<S extends BaseReadPolyHandler> extends BaseRouter<S> {
 
-    public static final String INQUIRY_RESULTS = "/multiple_results";
-
-    public static String endpoint = "not_a_valid_endpoint";
+    public static final String MULTIPLE_RESULTS = "/multiple_results";
 
     /**
      * Get a single resource from the back end service.
@@ -45,24 +43,20 @@ public abstract class BaseReadPolyRouter<S extends BaseReadPolyHandler> extends 
      * @param handler body from the consumer
      * @return a single resource from the back end service
      */
-    @ApiOperation(value = "Reactive Read Mono", notes = "Gets one resource")
+    @Operation(description = "Reactive Read Mono", summary = "Gets one resource")
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Ok"),
-            @ApiResponse(code = 204, message = "No Content"),
-            @ApiResponse(code = 400, message = "Bad Request"),
-            @ApiResponse(code = 401, message = "Unauthorized"),
-            @ApiResponse(code = 403, message = "Forbidden"),
+            @ApiResponse(responseCode = "200", description = "Ok"),
+            @ApiResponse(responseCode = "204", description = "No Content"),
+            @ApiResponse(responseCode = "400", description = "Bad Request"),
+            @ApiResponse(responseCode = "401", description = "Unauthorized"),
+            @ApiResponse(responseCode = "403", description = "Forbidden"),
     })
 
     @Bean
     public RouterFunction<ServerResponse> routePoly(S handler) {
         return RouterFunctions
-                .route(GET(getEndpoint()).and(accept(MediaType.APPLICATION_JSON)), handler::read);
+                .route(GET(getEndpoint() + MULTIPLE_RESULTS).and(accept(MediaType.APPLICATION_JSON)), handler::read);
     }
 
-    private String getEndpoint() {
-        return endpoint;
-    }
-
-    protected abstract void setEndpoint(String endpoint);
+    public abstract String getEndpoint();
 }

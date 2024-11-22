@@ -24,7 +24,6 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.TestPropertySource;
-
 import javax.sql.DataSource;
 import java.util.Properties;
 
@@ -73,7 +72,7 @@ public class MySqlDataConfigTest extends BaseMySqlDataConfig {
         properties.setProperty("hibernate.format_sql", "true");
         properties.setProperty("spring.datasource.h2.initialization-mode", "always");
         properties.setProperty("hibernate.cache.use_query_cache", "true");
-        properties.setProperty("hibernate.cache.provider_class", "net.sf.ehcache.hibernate.EhCacheProvider");
+        properties.setProperty("hibernate.cache.provider_class", "org.ehcache.hibernate.EhCacheProvider");
         return properties;
     }
 

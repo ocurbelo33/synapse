@@ -18,7 +18,7 @@
     <parent>
         <groupId>io.americanexpress.synapse</groupId>
         <artifactId>service</artifactId>
-        <version>0.3.32-SNAPSHOT</version>
+        <version>0.4.0-SNAPSHOT</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
@@ -41,6 +41,7 @@
         <module>sample-service-rest-cassandra-book</module>
         <module>sample-service-rest-mysql-book</module>
         <module>sample-service-rest-oracle-book</module>
+<!--        <module>sample-service-rest-native-book</module>-->
         <module>sample-service-rest-postgres-book</module>
     </modules>
 

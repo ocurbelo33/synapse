@@ -17,11 +17,11 @@
     <parent>
         <groupId>io.americanexpress.synapse</groupId>
         <artifactId>function-samples</artifactId>
-        <version>0.3.32-SNAPSHOT</version>
+        <version>0.4.0-SNAPSHOT</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>sample-function-book</artifactId>
+    <artifactId>sample-function-rest-book</artifactId>
 
     <!--Dependencies-->
     <dependencies>
@@ -60,14 +60,14 @@
                     <dependency>
                         <groupId>org.springframework.cloud</groupId>
                         <artifactId>spring-cloud-function-adapter-gcp</artifactId>
-                        <version>3.2.8</version>
+                        <version>4.1.1</version>
                     </dependency>
                 </dependencies>
             </plugin>
             <plugin>
                 <groupId>com.google.cloud.functions</groupId>
                 <artifactId>function-maven-plugin</artifactId>
-                <version>0.9.1</version>
+                <version>0.11.0</version>
                 <configuration>
                     <functionTarget>org.springframework.cloud.function.adapter.gcp.GcfJarLauncher</functionTarget>
                     <port>8080</port>

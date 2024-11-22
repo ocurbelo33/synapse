@@ -13,8 +13,6 @@
  */
 package io.americanexpress.synapse.framework.exception.model;
 
-import org.springframework.http.HttpStatus;
-
 /**
  * {@code ErrorCode} enum is used to return to the consumer a specific error message.
  * <p>
@@ -68,7 +66,12 @@ public enum ErrorCode {
     /**
      * Used for when the consumer makes a request to a locked resource.
      */
-    LOCKED(HttpStatus.LOCKED, "Locked.");
+    LOCKED(HttpStatus.LOCKED, "Locked."),
+
+    /**
+     * Used for when the consumer makes a request with change in the Entity State.
+     */
+    RESOURCE_OUT_OF_SYNC(HttpStatus.CONFLICT, "Resource out of sync.");
 
     /**
      * Gets the HttpStatus of the ErrorCode.
